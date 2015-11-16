@@ -1,9 +1,13 @@
 #include "Player.h"
 
+#include "WorldDatabase.h"
+
+using namespace std;
 
 Player::Player()
 {
-	Name = "test";
+	SetName("player name");
+	age = 18;
 }
 
 

@@ -48,9 +48,6 @@
     <ClCompile Include="PSSGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WorldObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\WorldObjects</Filter>
     </ClCompile>
@@ -59,6 +56,18 @@
     </ClCompile>
     <ClCompile Include="PlayerView.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Team.cpp">
+      <Filter>Source Files\WorldObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject.cpp">
+      <Filter>Source Files\WorldObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObjectFactory.cpp">
+      <Filter>Source Files\WorldObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +101,6 @@
     <ClInclude Include="PSSGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\WorldObjects</Filter>
     </ClInclude>
@@ -103,6 +109,18 @@
     </ClInclude>
     <ClInclude Include="PlayerView.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Team.h">
+      <Filter>Header Files\WorldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject.h">
+      <Filter>Header Files\WorldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObjectFactory.h">
+      <Filter>Header Files\WorldObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

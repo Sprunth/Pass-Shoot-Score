@@ -3,6 +3,10 @@
 #include "Globals.h"
 #include "GUI.h"
 
+#include "WorldDatabase.h"
+#include "WorldObjectFactory.h"
+
+#include "Team.h"
 #include "Player.h"
 
 #include "PlayerView.h"

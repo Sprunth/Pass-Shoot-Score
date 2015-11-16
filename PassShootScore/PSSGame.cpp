@@ -2,12 +2,21 @@
 
 PSSGame::PSSGame()
 {
+	WorldDatabase::InitializeDatabase();
+
+	
+
 	window = glfwCreateWindow(1280, 720, "Pass Shoot Score", nullptr, nullptr);
 
-	auto player = std::make_shared<Player>();
+	auto player = WorldObjectFactory::CreatePlayer();
 	playerView.LoadPlayer(player);
-}
 
+	auto team = WorldObjectFactory::CreateTeam();
+	player->SetTeam(team);
+
+	auto worldObjs = WorldDatabase::GetActiveDatabase()->GetAllWorldObjects();
+
+}
 
 PSSGame::~PSSGame()
 {
@@ -35,6 +44,8 @@ void PSSGame::Run()
 
 		// draw here
 		playerView.Draw();
+
+		ImGui::ShowTestWindow();
 
 		// Rendering
 		int display_w, display_h;

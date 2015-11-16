@@ -1,7 +1,10 @@
 #pragma once
 
 #include "View.h"
+#include "Team.h"
 #include "Player.h"
+
+#include <boost/format.hpp>
 
 class PlayerView :
 	public View

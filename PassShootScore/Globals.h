@@ -1,8 +1,11 @@
 #pragma once
 
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>

@@ -96,8 +96,11 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerView.cpp" />
     <ClCompile Include="PSSGame.cpp" />
+    <ClCompile Include="Team.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="WorldDatabase.cpp" />
     <ClCompile Include="WorldObject.cpp" />
+    <ClCompile Include="WorldObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h" />
@@ -112,8 +115,11 @@
     <ClInclude Include="stb_rect_pack.h" />
     <ClInclude Include="stb_textedit.h" />
     <ClInclude Include="stb_truetype.h" />
+    <ClInclude Include="Team.h" />
     <ClInclude Include="View.h" />
+    <ClInclude Include="WorldDatabase.h" />
     <ClInclude Include="WorldObject.h" />
+    <ClInclude Include="WorldObjectFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
