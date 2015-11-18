@@ -97,6 +97,7 @@
     <ClCompile Include="PlayerView.cpp" />
     <ClCompile Include="PSSGame.cpp" />
     <ClCompile Include="Team.cpp" />
+    <ClCompile Include="TopMenu.cpp" />
     <ClCompile Include="View.cpp" />
     <ClCompile Include="WorldDatabase.cpp" />
     <ClCompile Include="WorldObject.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="stb_textedit.h" />
     <ClInclude Include="stb_truetype.h" />
     <ClInclude Include="Team.h" />
+    <ClInclude Include="TopMenu.h" />
     <ClInclude Include="View.h" />
     <ClInclude Include="WorldDatabase.h" />
     <ClInclude Include="WorldObject.h" />

@@ -28,6 +28,15 @@
     <Filter Include="Source Files\Views">
       <UniqueIdentifier>{02c7ea3e-3db3-48dd-af3b-bce7d42a3f2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GlobalSystems">
+      <UniqueIdentifier>{ab52b518-7b0b-4fff-a7ef-f933793fc8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GlobalSystems">
+      <UniqueIdentifier>{b1d15f36-49d8-4900-8123-9306e0c7c4b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HeaderOnly">
+      <UniqueIdentifier>{0e5e65cd-2eb7-4a96-af5f-0e8fc485b377}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -45,20 +54,11 @@
     <ClCompile Include="imgui_draw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="PSSGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\WorldObjects</Filter>
     </ClCompile>
     <ClCompile Include="View.cpp">
       <Filter>Source Files\Views</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldDatabase.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Team.cpp">
       <Filter>Source Files\WorldObjects</Filter>
@@ -68,6 +68,18 @@
     </ClCompile>
     <ClCompile Include="WorldObjectFactory.cpp">
       <Filter>Source Files\WorldObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="PSSGame.cpp">
+      <Filter>Source Files\GlobalSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldDatabase.cpp">
+      <Filter>Source Files\GlobalSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="TopMenu.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,26 +104,11 @@
     <ClInclude Include="stb_truetype.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PSSGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\WorldObjects</Filter>
     </ClInclude>
     <ClInclude Include="View.h">
       <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldDatabase.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Team.h">
       <Filter>Header Files\WorldObjects</Filter>
@@ -121,6 +118,24 @@
     </ClInclude>
     <ClInclude Include="WorldObjectFactory.h">
       <Filter>Header Files\WorldObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="PSSGame.h">
+      <Filter>Header Files\GlobalSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldDatabase.h">
+      <Filter>Header Files\GlobalSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="TopMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Header Files\HeaderOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Header Files\HeaderOnly</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

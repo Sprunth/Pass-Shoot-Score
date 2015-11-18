@@ -2,6 +2,9 @@
 
 PSSGame::PSSGame()
 {
+	ImGuiIO& io = ImGui::GetIO();
+	io.IniFilename = "";
+
 	WorldDatabase::InitializeDatabase();
 
 	

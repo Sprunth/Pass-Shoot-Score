@@ -3,7 +3,7 @@
 
 View::View()
 {
-	SetSize(48, 32);
+	SetSize(128, 96);
 }
 
 
