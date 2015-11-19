@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "GUI.h"
+#include "TopMenu.h"
 
 #include "WorldDatabase.h"
 #include "WorldObjectFactory.h"

@@ -7,7 +7,16 @@ PSSGame::PSSGame()
 
 	WorldDatabase::InitializeDatabase();
 
-	
+	/// Setup Menu
+	TopMenu::RegisterNewMenuItem("", "File");
+	TopMenu::RegisterNewMenuItem("File", "Open");
+	TopMenu::RegisterNewMenuItem("File", "Exit");
+	TopMenu::RegisterNewMenuItem("", "View");
+	TopMenu::RegisterNewMenuItem("View", "Players");
+	TopMenu::RegisterNewMenuItem("View", "Teams");
+	TopMenu::RegisterNewMenuItem("View", "Leagues");
+	TopMenu::RegisterNewMenuItem("Teams", "By Reputation");
+	TopMenu::RegisterNewMenuItem("", "About");
 
 	window = glfwCreateWindow(1280, 720, "Pass Shoot Score", nullptr, nullptr);
 
@@ -47,6 +56,8 @@ void PSSGame::Run()
 
 		// draw here
 		playerView.Draw();
+
+		TopMenu::Draw();
 
 		ImGui::ShowTestWindow();
 
