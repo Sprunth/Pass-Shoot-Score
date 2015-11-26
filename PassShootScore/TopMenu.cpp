@@ -3,6 +3,7 @@
 using namespace std;
 
 bool TopMenu::Exit = false;
+bool TopMenu::ShowTestWindow = false;
 
 void TopMenu::Draw()
 {
@@ -22,7 +23,16 @@ void TopMenu::FileMenuOptions()
 		ImGui::EndMenu();
 	}
 
+	if (ImGui::BeginMenu("Debug"))
+	{
+		ImGui::MenuItem("Show Test Window", nullptr, &ShowTestWindow);		
+		ImGui::EndMenu();
+	}
+
 	if (Exit)
 		exit(0);
+
+	if (ShowTestWindow)
+		ImGui::ShowTestWindow();
 }
 

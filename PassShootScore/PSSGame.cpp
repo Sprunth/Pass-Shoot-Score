@@ -8,7 +8,6 @@ PSSGame::PSSGame()
 
 	WorldDatabase::InitializeDatabase();
 
-	
 
 	window = glfwCreateWindow(1280, 720, "Pass Shoot Score", nullptr, nullptr);
 
@@ -24,7 +23,8 @@ PSSGame::PSSGame()
 
 PSSGame::~PSSGame()
 {
-	
+	ImGui_ImplGlfwGL3_Shutdown();
+	glfwDestroyWindow(window);
 }
 
 
@@ -51,8 +51,6 @@ void PSSGame::Run()
 
 		TopMenu::Draw();
 
-		ImGui::ShowTestWindow();
-
 		// Rendering
 		int display_w, display_h;
 		glfwGetFramebufferSize(window, &display_w, &display_h);
@@ -62,6 +60,5 @@ void PSSGame::Run()
 		ImGui::Render();
 		glfwSwapBuffers(window);
 	}
-	ImGui_ImplGlfwGL3_Shutdown();
 }
 

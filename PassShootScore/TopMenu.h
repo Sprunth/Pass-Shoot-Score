@@ -19,5 +19,7 @@ private:
 
 	static bool Exit;
 
+	static bool ShowTestWindow;
+
 };
 
