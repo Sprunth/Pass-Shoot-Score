@@ -12,6 +12,7 @@ public:
 	void Draw();
 
 	void SetSize(int x, int y) { windowSize = ImVec2((float)x, (float)y); }
+	void SetPos(int x, int y) { windowPos = ImVec2((float)x, (float)y); }
 	void SetTitle(std::string title) { windowName = title; }
 
 protected:
@@ -21,6 +22,7 @@ protected:
 
 private:
 	ImVec2 windowSize;
+	ImVec2 windowPos;
 	std::string windowName;
 };
 

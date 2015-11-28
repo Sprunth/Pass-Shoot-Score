@@ -12,10 +12,12 @@ PSSGame::PSSGame()
 	window = glfwCreateWindow(1280, 720, "Pass Shoot Score", nullptr, nullptr);
 
 	auto player = WorldObjectFactory::CreatePlayer();
+	auto player2 = WorldObjectFactory::CreatePlayer();
 	playerView.LoadPlayer(player);
 
 	auto team = WorldObjectFactory::CreateTeam();
 	team->AddPlayer(player);
+	team->AddPlayer(player2);
 
 	teamView.LoadTeam(team);
 }

@@ -4,6 +4,7 @@ using namespace ImGui;
 
 PlayerView::PlayerView()
 {
+	SetPos(600, 50);
 }
 
 

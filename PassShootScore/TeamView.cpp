@@ -3,6 +3,7 @@
 
 TeamView::TeamView()
 {
+	SetPos(100, 50);
 }
 
 
@@ -31,6 +32,10 @@ void TeamView::DrawView()
 	for (auto player : CurrentlyLoadedTeam->GetPlayers())
 	{
 		ImGui::Text(player->GetName().c_str()); ImGui::NextColumn();
+		if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
+		{
+			std::cout << "clicked " << player->GetName() << std::endl;
+		}
 		ImGui::Text(std::to_string(player->GetAge()).c_str()); ImGui::NextColumn();
 	}
 
