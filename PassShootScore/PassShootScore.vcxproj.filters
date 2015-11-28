@@ -81,6 +81,9 @@
     <ClCompile Include="TopMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TeamView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui_impl_glfw_gl3.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="Globals.h">
       <Filter>Header Files\HeaderOnly</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamView.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

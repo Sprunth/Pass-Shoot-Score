@@ -14,7 +14,11 @@ public:
 	~Team();
 
 	std::vector<sptr<Player>> GetPlayers() const { return players; }
-	void AddPlayer(sptr<Player> player) { players.push_back(player); }
+	void AddPlayer(sptr<Player> player) 
+	{ 
+		players.push_back(player);
+		player->SetTeam(std::static_pointer_cast<Team>(this->shared_from_this()));
+	}
 
 private:
 	

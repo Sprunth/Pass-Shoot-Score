@@ -15,10 +15,9 @@ PSSGame::PSSGame()
 	playerView.LoadPlayer(player);
 
 	auto team = WorldObjectFactory::CreateTeam();
-	player->SetTeam(team);
+	team->AddPlayer(player);
 
-	auto worldObjs = WorldDatabase::GetActiveDatabase()->GetAllWorldObjects();
-
+	teamView.LoadTeam(team);
 }
 
 PSSGame::~PSSGame()
@@ -48,6 +47,7 @@ void PSSGame::Run()
 
 		// draw here
 		playerView.Draw();
+		teamView.Draw();
 
 		TopMenu::Draw();
 

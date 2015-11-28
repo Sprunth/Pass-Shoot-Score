@@ -11,6 +11,7 @@
 #include "Player.h"
 
 #include "PlayerView.h"
+#include "TeamView.h"
 
 class PSSGame
 {
@@ -25,6 +26,7 @@ public:
 
 private:
 	PlayerView playerView;
+	TeamView teamView;
 
 };
 

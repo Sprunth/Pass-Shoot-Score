@@ -15,6 +15,7 @@ public:
 	WorldDatabase();
 	~WorldDatabase();
 
+	/// Only have factory objects call these
 	void AddWorldObject(sptr<WorldObject> o);
 	void AddPlayer(sptr<Player> p);
 	void AddTeam(sptr<Team> t);
