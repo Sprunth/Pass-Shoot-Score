@@ -1,6 +1,5 @@
 /// Header containing includes for GUI-related classes
 
-
 #pragma once
 
 #include "imgui.h"

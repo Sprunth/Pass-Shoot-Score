@@ -4,7 +4,7 @@
 // See main.cpp for an example of using this.
 // https://github.com/ocornut/imgui
 
-#include "imgui.h"
+#include <imgui.h>
 #include "imgui_impl_glfw_gl3.h"
 
 // GL3W/GLFW

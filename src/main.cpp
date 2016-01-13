@@ -1,7 +1,8 @@
 
-#include "GUI.h"
+#include <cstdio>
 
-#include <stdio.h>
+#include <GUI.h>
+
 #include "PSSGame.h"
 
 static void error_callback(int error, const char* description)
@@ -9,7 +10,7 @@ static void error_callback(int error, const char* description)
 	fprintf(stderr, "Error %d: %s\n", error, description);
 }
 
-int main(int, char**)
+int main(int argc, char const *argv[])
 {
 	// Setup window
 	glfwSetErrorCallback(error_callback);

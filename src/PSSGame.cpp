@@ -1,30 +1,20 @@
+
 #include "PSSGame.h"
 
 PSSGame::PSSGame()
 {
 	ImGuiIO& io = ImGui::GetIO();
 	io.IniFilename = "";
-	io.Fonts->AddFontFromFileTTF("DroidSans.ttf", 16);
 
-	WorldDatabase::InitializeDatabase();
+	window = glfwCreateWindow(1280, 720, "Pass Shoot Score!", nullptr, nullptr);
 
 
-	window = glfwCreateWindow(1280, 720, "Pass Shoot Score", nullptr, nullptr);
-
-	auto player = WorldObjectFactory::CreatePlayer();
-	auto player2 = WorldObjectFactory::CreatePlayer();
-	playerView.LoadPlayer(player);
-
-	auto team = WorldObjectFactory::CreateTeam();
-	team->AddPlayer(player);
-	team->AddPlayer(player2);
-
-	teamView.LoadTeam(team);
 }
 
 PSSGame::~PSSGame()
 {
 	ImGui_ImplGlfwGL3_Shutdown();
+
 	glfwDestroyWindow(window);
 }
 
@@ -37,30 +27,26 @@ void PSSGame::Init()
 	ImGui_ImplGlfwGL3_Init(window, true);
 }
 
-
 void PSSGame::Run()
 {
-	ImVec4 clearColor = ImColor(140, 160, 170);
+	ImVec4 clearCol = ImColor(140, 160, 170);
 
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 		ImGui_ImplGlfwGL3_NewFrame();
 
-		// draw here
-		playerView.Draw();
-		teamView.Draw();
-
-		TopMenu::Draw();
+		//draw here
 
 		// Rendering
 		int display_w, display_h;
 		glfwGetFramebufferSize(window, &display_w, &display_h);
 		glViewport(0, 0, display_w, display_h);
-		glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
+		glClearColor(clearCol.x, clearCol.y, clearCol.z, clearCol.w);
 		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui::Render();
 		glfwSwapBuffers(window);
+
 	}
 }
 
