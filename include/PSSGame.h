@@ -1,5 +1,7 @@
 
 #include "GUI.h"
+#include "Player.h"
+#include "Team.h"
 
 class PSSGame
 {

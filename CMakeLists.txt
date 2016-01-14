@@ -19,7 +19,9 @@ set (SRC_FILES ${SRC_FILES})
 # Assuming they are in the base INC_DIR or SRC_DIR
 list (APPEND CLASSES_TO_INCLUDE
 	PSSGame
+	WorldObject
 	Player
+	Team
 	)
 
 # Any files that don't have .h and .cpp pairing

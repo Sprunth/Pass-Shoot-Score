@@ -2,16 +2,12 @@
 
 #include "Globals.h"
 
-class Player
+#include "WorldObject.h"
+
+class Player : public WorldObject
 {
 public:
 	Player();
 	~Player();
 
-	std::string GetName() const { return name; }
-	void SetName(std::string n) { name = n; }
-
-private:
-	std::string name;
 };
-
