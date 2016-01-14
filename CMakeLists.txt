@@ -13,13 +13,35 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 set (INC_FILES ${INC_FILES})
 set (SRC_FILES ${SRC_FILES})
 
-# List headers and source files here
+### List headers and source files here
+
+# As a convience, every class listed below will be added (.h and .cpp)
+# Assuming they are in the base INC_DIR or SRC_DIR
+list (APPEND CLASSES_TO_INCLUDE
+	PSSGame
+	Player
+	)
+
+# Any files that don't have .h and .cpp pairing
 set (INC_FILES ${INC_FILES}
 	${INC_DIR}/GUI.h
-	${INC_DIR}/PSSGame.h)
+	${INC_DIR}/Globals.h
+	)
 
 set (SRC_FILES ${SRC_FILES}
-	${SRC_DIR}/PSSGame.cpp)
+	)
+
+foreach (class_name ${CLASSES_TO_INCLUDE})
+
+	set (INC_FILES ${INC_FILES}
+		${INC_DIR}/${class_name}.h)
+
+	set (SRC_FILES ${SRC_FILES}
+		${SRC_DIR}/${class_name}.cpp)
+
+endforeach(class_name)
+
+# End Headers and Source files
 
 # BOOST START
 set (BOOST_ROOT "C:/Boost/boost_1_60_0")
@@ -36,6 +58,7 @@ endif()
 set (EXTRA_LIBS ${EXTRA_LIBS} ${Boost_LIBRARIES})
 # BOOST END
 
+# OpenGL, GLFW, GL3W
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
 set(EXTRA_LIBS ${EXTRA_LIBS} ${OPENGL_LIBRARIES})
@@ -52,7 +75,7 @@ if (GL3W_FOUND)
 	link_directories (${GL3W_LIBRARIES})
 	set (EXTRA_LIBS ${EXTRA_LIBS} gl3w)
 endif()
-
+# End OpenGL, GLFW, GL3W
 
 # IMGUI START
 

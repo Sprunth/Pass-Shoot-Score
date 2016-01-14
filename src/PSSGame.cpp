@@ -37,6 +37,12 @@ void PSSGame::Run()
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		//draw here
+		ImGui::Begin("Player List");
+		ImGui::SetWindowSize(ImVec2(300, 500));
+		const char* players[] = { "Player 1", "Player 2" };
+		int selected;
+		ImGui::ListBox("Player List", &selected, players, 2);
+		ImGui::End();
 
 		// Rendering
 		int display_w, display_h;
