@@ -1,11 +1,8 @@
 #include "Player.h"
 
 
-Player::Player()
+Player::Player(int age) : age(age)
 {
-	std::stringstream ss;
-	ss << GetID();
-	SetName(ss.str());
 }
 
 

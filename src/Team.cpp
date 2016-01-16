@@ -33,14 +33,14 @@ void Team::DrawTeamList()
 	for (auto p : players)
 	{
 		// In the future we can have other fields besides name
-		rowStrings.push_back(p->GetName());
+		rowStrings.push_back( (boost::format("%s %i") % p->GetName() % p->GetAge()).str() );
 	}
 	std::vector<const char*> rows;
 	std::transform(rowStrings.begin(), rowStrings.end(), std::back_inserter(rows), [](const std::string &s){return s.c_str(); });
 	int currentItem;
 	ImGui::ListBox(GetName().c_str(), &currentItem, &rows[0], rows.size(), rows.size());
 	
-	if (currentItem < rows.size())
+	if (static_cast<unsigned int>(currentItem) < rows.size())
 		std::cout << "Selected Player: " << players[currentItem]->GetName() << std::endl;
 
 	ImGui::End();

@@ -66,11 +66,8 @@ void PSSGame::Run()
 #if _DEBUG
 		if (ImGui::BeginMenu("Debug"))
 		{
-			
 			ImGui::MenuItem("Show test window", 0, &showTest);				
 			ImGui::MenuItem("Show debug window", 0, &showDebug);
-
-
 
 			ImGui::EndMenu();
 		}

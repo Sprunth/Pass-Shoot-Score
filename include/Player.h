@@ -7,7 +7,11 @@
 class Player : public WorldObject
 {
 public:
-	Player();
+	Player(int age);
 	~Player();
 
+	int GetAge() const { return age; }
+
+private:
+	int age;
 };
