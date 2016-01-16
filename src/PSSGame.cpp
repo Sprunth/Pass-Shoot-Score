@@ -14,6 +14,7 @@ PSSGame::PSSGame()
 PSSGame::~PSSGame()
 {
 	ImGui_ImplGlfwGL3_Shutdown();
+	glfwTerminate();
 
 	glfwDestroyWindow(window);
 }
@@ -42,15 +43,49 @@ void PSSGame::Run()
 	t->AddPlayer(p1);
 	t->AddPlayer(p2);
 
+	bool showTest = false, showDebug = false;
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
+
+		//auto io = ImGui::GetIO();
+
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		//draw here
-		t->DrawTeamList();
+		ImGui::BeginMainMenuBar();
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Exit"))
+			{
+				glfwSetWindowShouldClose(window, true);
+			}
+			ImGui::EndMenu();
+		}
+#if _DEBUG
+		if (ImGui::BeginMenu("Debug"))
+		{
+			
+			ImGui::MenuItem("Show test window", 0, &showTest);				
+			ImGui::MenuItem("Show debug window", 0, &showDebug);
 
-		d.Draw();
+
+
+			ImGui::EndMenu();
+		}
+#endif
+		ImGui::EndMainMenuBar();
+
+#ifdef _DEBUG
+		if (showTest)
+			ImGui::ShowTestWindow(&showTest);
+		if (showDebug)
+			d.Draw();
+#endif
+
+		t->DrawTeamList();
+		
 
 		// Rendering
 		int display_w, display_h;

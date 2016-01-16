@@ -25,8 +25,8 @@ void Team::RemovePlayer(sptr<Player> p)
 
 void Team::DrawTeamList()
 {
-	ImGui::Begin(GetName().c_str());
-	ImGui::SetWindowSize(ImVec2(200, 400));
+	bool opened;
+	ImGui::Begin(GetName().c_str(),&opened,ImVec2(250,300));
 
 	// Gather all the player names
 	std::vector<std::string> rowStrings;
@@ -38,7 +38,10 @@ void Team::DrawTeamList()
 	std::vector<const char*> rows;
 	std::transform(rowStrings.begin(), rowStrings.end(), std::back_inserter(rows), [](const std::string &s){return s.c_str(); });
 	int currentItem;
-	ImGui::ListBox(GetName().c_str(), &currentItem, &rows[0], rows.size());
+	ImGui::ListBox(GetName().c_str(), &currentItem, &rows[0], rows.size(), rows.size());
+	
+	if (currentItem < rows.size())
+		std::cout << "Selected Player: " << players[currentItem]->GetName() << std::endl;
 
 	ImGui::End();
 }
