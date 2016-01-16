@@ -31,14 +31,16 @@ void PSSGame::Run()
 {
 	ImVec4 clearCol = ImColor(140, 160, 170);
 
-	Team t;
-	t.SetName("Team 1");
-	auto p1 = std::make_shared<Player>();
-	auto p2 = std::make_shared<Player>();
+	Debug d;
+
+	auto t = TeamFactory::CreateTeam();
+	t->SetName("Team 1");
+	auto p1 = PlayerFactory::CreatePlayer();
+	auto p2 = PlayerFactory::CreatePlayer();
 	p1->SetName("Player 1");
 	p2->SetName("Player 2");
-	t.AddPlayer(p1);
-	t.AddPlayer(p2);
+	t->AddPlayer(p1);
+	t->AddPlayer(p2);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -46,7 +48,9 @@ void PSSGame::Run()
 		ImGui_ImplGlfwGL3_NewFrame();
 
 		//draw here
-		t.DrawTeamList();
+		t->DrawTeamList();
+
+		d.Draw();
 
 		// Rendering
 		int display_w, display_h;

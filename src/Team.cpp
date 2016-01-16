@@ -26,6 +26,7 @@ void Team::RemovePlayer(sptr<Player> p)
 void Team::DrawTeamList()
 {
 	ImGui::Begin(GetName().c_str());
+	ImGui::SetWindowSize(ImVec2(200, 400));
 
 	// Gather all the player names
 	std::vector<std::string> rowStrings;

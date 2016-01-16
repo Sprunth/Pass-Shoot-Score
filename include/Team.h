@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "WorldObject.h"
 #include "Player.h"
+#include "WorldDB.h"
 
 #include "GUI.h"
 

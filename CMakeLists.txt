@@ -18,10 +18,15 @@ set (SRC_FILES ${SRC_FILES})
 # As a convience, every class listed below will be added (.h and .cpp)
 # Assuming they are in the base INC_DIR or SRC_DIR
 list (APPEND CLASSES_TO_INCLUDE
+	Debug
 	PSSGame
+	WorldDB
 	WorldObject
+	WorldObjectFactory
 	Player
+	PlayerFactory
 	Team
+	TeamFactory
 	)
 
 # Any files that don't have .h and .cpp pairing
@@ -109,6 +114,10 @@ set (SRC_DIR ${SRC_DIR} ${PROJECT_SOURCE_DIR}/src/imgui)
 
 # IMGUI END
 
+
+# DEFINES/FLAGS
+add_definitions(-D_SCL_SECURE_NO_WARNINGS)
+# END DEFINES/FLAGS
 
 # BUILD SETUP
 

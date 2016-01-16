@@ -3,6 +3,9 @@
 
 Player::Player()
 {
+	std::stringstream ss;
+	ss << GetID();
+	SetName(ss.str());
 }
 
 
