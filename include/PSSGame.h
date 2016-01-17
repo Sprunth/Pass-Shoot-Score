@@ -16,7 +16,20 @@ public:
 	void Init();
 	void Run();
 
-
 private:
+	void Draw();
+	void Render();
+
+	ImVec4 clearCol;
 	GLFWwindow* window;
+
+	bool simulating;
+	bool showTest, showDebug;
+
+	// test
+	sptr<Team> t;
+
+#ifdef _DEBUG
+	Debug d;
+#endif
 };

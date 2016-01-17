@@ -121,6 +121,10 @@ add_definitions(-D_SCL_SECURE_NO_WARNINGS)
 
 # BUILD SETUP
 
+# Disabled due to build errors.
+# But manually enabling it in the sln works fine, so do that.
+#set (CMAKE_CXX_FLAGS "/MP")
+
 include_directories(${INC_DIR})
 
 add_executable (${PROJECT_NAME} ${MAIN_FILE} ${SRC_FILES} ${INC_FILES})
