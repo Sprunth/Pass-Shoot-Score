@@ -2,16 +2,11 @@
 
 #include "Globals.h"
 
-#include "WorldObject.h"
+#include "Person.h"
 
-class Player : public WorldObject
+class Player : public Person
 {
 public:
 	Player(int age);
 	~Player();
-
-	int GetAge() const { return age; }
-
-private:
-	int age;
 };

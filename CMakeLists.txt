@@ -21,8 +21,10 @@ list (APPEND CLASSES_TO_INCLUDE
 	Debug
 	PSSGame
 	WorldDB
+	TimeManager
 	WorldObject
 	WorldObjectFactory
+	Person
 	Player
 	PlayerFactory
 	Team

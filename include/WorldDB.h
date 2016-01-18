@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Globals.h"
-#include <ctime>
 #include <iomanip>
+
+#include "TimeManager.h"
 
 class Player;
 class Team;
@@ -27,14 +28,12 @@ public:
 	static std::vector<sptr<Team>>* DEBUG_GetVectorOfTeams(){ return &allTeams; }
 #endif
 
-	static tm GetWorldTime() { return WorldTime; }
 	static std::string GetWorldTimeStr();
 
 private:
 	static std::vector<sptr<Player>> allPlayers;
 	static std::vector<sptr<Team>> allTeams;
 
-	static tm WorldTime;
-
+	static TimeManager tmgr;
 };
 

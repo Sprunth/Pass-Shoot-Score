@@ -3,14 +3,14 @@
 std::vector<sptr<Player>> WorldDB::allPlayers;
 std::vector<sptr<Team>> WorldDB::allTeams;
 
-tm WorldDB::WorldTime;
+TimeManager WorldDB::tmgr;
 
 void WorldDB::NewWorld()
 {
 	allPlayers.clear();
 	allTeams.clear();
 
-	WorldTime = { 0, 0, 0, 1, 0, 116, 0, 0, 0 };
+	tmgr = TimeManager();
 }
 
 void WorldDB::LoadWorld()
@@ -22,13 +22,27 @@ void WorldDB::Simulate(bool &stop)
 {
 	// Todo: some sort of event queue per day, sorted by hour
 	
-	WorldTime.tm_hour += 1;
-	mktime(&WorldTime);
+	tmgr.IncrementHour();
 
-	if (rand() % 5)
+	/*if (rand() % 50 == 1)
+		stop = true;*/
+
+	bool opened;
+	
+	ImGui::SetNextWindowPosCenter();
+	ImGui::SetNextWindowSize(ImVec2(200, 100));
+	ImGui::Begin("Simulating", &opened, ImGuiWindowFlags_Modal | ImGuiWindowFlags_NoResize|
+		ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
+	ImGui::Text("Simulating");
+	ImGui::Separator();
+	ImGui::Text(tmgr.GetWorldTimeStr("%b %d, %Y").c_str());
+	ImGui::SameLine(160);
+	if (ImGui::Button("Stop"))
+	{
 		stop = true;
+	}
+	ImGui::End();
 }
-
 
 void WorldDB::RegisterPlayer(std::shared_ptr<Player> p)
 {
@@ -52,7 +66,5 @@ void WorldDB::RegisterTeam(std::shared_ptr<Team> t)
 
 std::string WorldDB::GetWorldTimeStr()
 {
-	std::stringstream ss;
-	ss << std::put_time(&WorldTime, "%d-%m-%Y %H-%M");
-	return ss.str();
+	return tmgr.GetWorldTimeStr();
 }
