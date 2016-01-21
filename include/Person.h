@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Globals.h"
-
+#include "WorldDB.h"
 #include "WorldObject.h"
 
 class Person :
@@ -15,5 +15,6 @@ public:
 
 private:
 	int age;
+	tm birthday;
 };
 

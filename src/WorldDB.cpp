@@ -4,6 +4,7 @@ std::vector<sptr<Player>> WorldDB::allPlayers;
 std::vector<sptr<Team>> WorldDB::allTeams;
 
 TimeManager WorldDB::tmgr;
+std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>> WorldDB::eventMaster;
 
 void WorldDB::NewWorld()
 {
@@ -11,6 +12,7 @@ void WorldDB::NewWorld()
 	allTeams.clear();
 
 	tmgr = TimeManager();
+	eventMaster.clear();
 }
 
 void WorldDB::LoadWorld()
@@ -19,11 +21,23 @@ void WorldDB::LoadWorld()
 }
 
 void WorldDB::Simulate(bool &stop)
-{
-	// Todo: some sort of event queue per day, sorted by hour
-	
+{	
 	tmgr.IncrementHour();
 
+	/// Get all the events have registered to happen this hour
+	auto erange = eventMaster.equal_range(tmgr.GetWorldTime());
+	for (auto it = erange.first; it != erange.second; ++it)
+	{
+		/// For every registered event, call the callback
+		auto func = it->second.first;
+		auto envtType = it->second.second;
+
+		func(envtType);
+	}
+	// we have processed them all, so remove them.
+	eventMaster.erase(tmgr.GetWorldTime());
+
+	/// Todo: somehow allow callbacks to enter a 'block' queue of things that must be resolved
 	/*if (rand() % 50 == 1)
 		stop = true;*/
 
@@ -63,6 +77,13 @@ void WorldDB::RegisterTeam(std::shared_ptr<Team> t)
 		allTeams.push_back(t);
 	}
 }
+
+void WorldDB::RegisterEvent(tm time, std::function<void(EventType)>& f, EventType e)
+{
+	eventMaster.insert(std::pair<tm, std::pair<std::function<void(EventType)>&, EventType>>
+		(time, std::pair<std::function<void(EventType)>&, EventType>(f, e)));
+}
+
 
 std::string WorldDB::GetWorldTimeStr()
 {
