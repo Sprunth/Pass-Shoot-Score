@@ -8,7 +8,7 @@ class Person :
 	public WorldObject
 {
 public:
-	Person(int age);
+	Person(tm birthday);
 	virtual ~Person();
 
 	int GetAge() const { return age; }
@@ -16,5 +16,13 @@ public:
 private:
 	int age;
 	tm birthday;
+
+	void OnBirthday(EventType);
+
+	static int CalculateAge(const Person& p)
+	{
+		// todo
+		return 0;
+	}
 };
 

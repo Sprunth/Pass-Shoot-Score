@@ -4,10 +4,12 @@ std::vector<sptr<Player>> WorldDB::allPlayers;
 std::vector<sptr<Team>> WorldDB::allTeams;
 
 TimeManager WorldDB::tmgr;
-std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>> WorldDB::eventMaster;
+std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>, tm_comparer> WorldDB::eventMaster;
 
 void WorldDB::NewWorld()
 {
+	srand(time(nullptr));
+
 	allPlayers.clear();
 	allTeams.clear();
 

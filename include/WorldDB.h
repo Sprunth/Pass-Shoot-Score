@@ -15,6 +15,17 @@ enum class EventType
 	PLAYER_BIRTHDAY
 };
 
+// tm has no comparer and we need one for the multimap
+struct tm_comparer
+{
+	bool operator() (const tm & t1, const tm & t2) const
+	{
+		auto start = t1;
+		auto end = t2;
+		return difftime(mktime(&end), mktime(&start)) > 0;
+	}
+};
+
 /// A Singleton class to hold the game state
 class WorldDB
 {
@@ -48,6 +59,6 @@ private:
 
 	/// Other game objects will add functions and the eventtype to return to the eventmaster,
 	/// indexed by the time (tm) they need it called at.
-	static std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>> eventMaster;
+	static std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>, tm_comparer> eventMaster;
 };
 
