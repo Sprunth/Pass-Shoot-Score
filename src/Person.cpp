@@ -1,8 +1,9 @@
 #include "Person.h"
 
 
-Person::Person(tm birthday) : birthday(birthday)
+Person::Person(TimePoint birthday) : birthday(birthday)
 {
+/*
 	age = CalculateAge(*this);
 	std::cout << "Birthday generated on: " << std::put_time(&birthday, "%b %d, %Y  %H:%M") << std::endl;
 	auto nextBirthday = birthday;
@@ -14,6 +15,7 @@ Person::Person(tm birthday) : birthday(birthday)
 
 	std::function<void(EventType)> bday_callback = std::bind(&Person::OnBirthday, this, std::placeholders::_1);
 	WorldDB::RegisterEvent(nextBirthday, bday_callback, EventType::PLAYER_BIRTHDAY);
+*/
 
 }
 
@@ -25,7 +27,8 @@ Person::~Person()
 
 void Person::OnBirthday(EventType)
 {
-	birthday.tm_mday++;
-	mktime(&birthday);
-	age = CalculateAge(*this);
+
+	auto tt = std::chrono::system_clock::to_time_t(birthday);
+
+
 }

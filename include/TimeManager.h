@@ -14,9 +14,9 @@ public:
 
 	std::string GetWorldTimeStr(std::string format = "%b %d, %Y  %H-%M") const;
 
-	tm GetWorldTime() const { return WorldTime; }
+	TimePoint GetWorldTime() const { return WorldTime; }
 
 private:
-	tm WorldTime;
+	TimePoint WorldTime;
 };
 

@@ -49,7 +49,7 @@ public:
 	static void RegisterEvent(tm time, std::function<void(EventType)>& f, EventType e);
 	
 	static std::string GetWorldTimeStr();
-	static tm GetWorldTime() { return tmgr.GetWorldTime(); }
+	static TimePoint GetWorldTime() { return tmgr.GetWorldTime(); }
 
 private:
 	static std::vector<sptr<Player>> allPlayers;

@@ -3,7 +3,8 @@
 
 TimeManager::TimeManager()
 {
-	WorldTime = { 0, 0, 0, 1, 0, 116, 0, 0, 0 };
+	tm startTime = { 0, 0, 0, 1, 0, 116, 0, 0, 0 };
+	WorldTime = std::chrono::system_clock::from_time_t(mktime(&startTime));
 }
 
 
@@ -13,8 +14,7 @@ TimeManager::~TimeManager()
 
 void TimeManager::IncrementHour()
 {
-	WorldTime.tm_hour += 1;
-	mktime(&WorldTime);
+	WorldTime += std::chrono::hours(1);
 }
 
 std::string TimeManager::GetWorldTimeStr(std::string format) const

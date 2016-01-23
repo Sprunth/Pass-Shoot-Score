@@ -1,7 +1,7 @@
 #pragma once
 
 #include <algorithm>
-#include <ctime>
+#include <chrono>
 #include <iostream>
 #include <memory>
 #include <sstream>
@@ -13,3 +13,6 @@
 #include <boost/uuid/uuid_io.hpp>
 
 #define sptr std::shared_ptr
+
+using Clock = std::chrono::high_resolution_clock;
+using TimePoint = std::chrono::time_point<Clock>;
