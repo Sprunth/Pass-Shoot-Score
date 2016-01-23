@@ -19,12 +19,8 @@ sptr<Player> PlayerFactory::CreatePlayer()
 	/// Different positions, different ages
 
 	/// generate a random birthday for this new player
-	tm birthday = WorldDB::GetWorldTime();
-	birthday.tm_year = rand() % 25 + 80;
-	birthday.tm_mon = rand() % 11;
-	birthday.tm_mday = rand() % 31;
-	birthday.tm_hour = rand() % 23;
-	mktime(&birthday);
+	auto birthday = WorldDB::GetWorldTime();
+	birthday += std::chrono::hours(-24 * 365 * (rand() % 10 + 15));
 
 	auto player = std::make_shared<Player>(birthday);
 

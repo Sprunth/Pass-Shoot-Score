@@ -35,6 +35,7 @@ list (APPEND CLASSES_TO_INCLUDE
 set (INC_FILES ${INC_FILES}
 	${INC_DIR}/GUI.h
 	${INC_DIR}/Globals.h
+	${INC_DIR}/TimeHeader.h
 	)
 
 set (SRC_FILES ${SRC_FILES}

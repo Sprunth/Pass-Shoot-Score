@@ -4,11 +4,11 @@ std::vector<sptr<Player>> WorldDB::allPlayers;
 std::vector<sptr<Team>> WorldDB::allTeams;
 
 TimeManager WorldDB::tmgr;
-std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>, tm_comparer> WorldDB::eventMaster;
+std::multimap<TimePoint, std::pair<std::function<void(EventType)>&, EventType>> WorldDB::eventMaster;
 
 void WorldDB::NewWorld()
 {
-	srand(time(nullptr));
+	srand(static_cast<unsigned int>(time(nullptr)));
 
 	allPlayers.clear();
 	allTeams.clear();
@@ -80,9 +80,9 @@ void WorldDB::RegisterTeam(std::shared_ptr<Team> t)
 	}
 }
 
-void WorldDB::RegisterEvent(tm time, std::function<void(EventType)>& f, EventType e)
+void WorldDB::RegisterEvent(TimePoint time, std::function<void(EventType)>& f, EventType e)
 {
-	eventMaster.insert(std::pair<tm, std::pair<std::function<void(EventType)>&, EventType>>
+	eventMaster.insert(std::pair<TimePoint, std::pair<std::function<void(EventType)>&, EventType>>
 		(time, std::pair<std::function<void(EventType)>&, EventType>(f, e)));
 }
 

@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "GUI.h"
+#include "TimeHeader.h"
 #include <iomanip>
 
 class TimeManager

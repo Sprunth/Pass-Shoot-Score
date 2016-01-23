@@ -15,17 +15,6 @@ enum class EventType
 	PLAYER_BIRTHDAY
 };
 
-// tm has no comparer and we need one for the multimap
-struct tm_comparer
-{
-	bool operator() (const tm & t1, const tm & t2) const
-	{
-		auto start = t1;
-		auto end = t2;
-		return difftime(mktime(&end), mktime(&start)) > 0;
-	}
-};
-
 /// A Singleton class to hold the game state
 class WorldDB
 {
@@ -46,7 +35,7 @@ public:
 	static std::vector<sptr<Team>>* DEBUG_GetVectorOfTeams(){ return &allTeams; }
 #endif
 
-	static void RegisterEvent(tm time, std::function<void(EventType)>& f, EventType e);
+	static void RegisterEvent(TimePoint time, std::function<void(EventType)>& f, EventType e);
 	
 	static std::string GetWorldTimeStr();
 	static TimePoint GetWorldTime() { return tmgr.GetWorldTime(); }
@@ -59,6 +48,6 @@ private:
 
 	/// Other game objects will add functions and the eventtype to return to the eventmaster,
 	/// indexed by the time (tm) they need it called at.
-	static std::multimap<tm, std::pair<std::function<void(EventType)>&, EventType>, tm_comparer> eventMaster;
+	static std::multimap<TimePoint, std::pair<std::function<void(EventType)>&, EventType>> eventMaster;
 };
 

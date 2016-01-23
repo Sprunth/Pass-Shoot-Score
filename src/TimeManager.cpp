@@ -20,7 +20,19 @@ void TimeManager::IncrementHour()
 std::string TimeManager::GetWorldTimeStr(std::string format) const
 {
 	std::stringstream ss;
-	ss << std::put_time(&WorldTime, format.c_str());
+	auto ttime_t = std::chrono::system_clock::to_time_t(WorldTime);
+#if defined(_MSC_VER)
+	tm* ttm = new tm();
+	gmtime_s(ttm, &ttime_t);
+#else
+	auto ttm = gmtime(&ttime_t);
+#endif
+	ss << std::put_time(ttm, format.c_str());
+
+#if defined(_MSC_VER)
+	free(ttm);
+#endif
+
 	return ss.str();
 }
 
