@@ -2,11 +2,18 @@
 
 #include "Globals.h"
 #include <iomanip>
+#include <map>
 
 #include "TimeManager.h"
 
 class Player;
 class Team;
+
+// types of events for the eventMaster to handle
+enum class EventType
+{
+	PLAYER_BIRTHDAY
+};
 
 /// A Singleton class to hold the game state
 class WorldDB
@@ -28,12 +35,19 @@ public:
 	static std::vector<sptr<Team>>* DEBUG_GetVectorOfTeams(){ return &allTeams; }
 #endif
 
+	static void RegisterEvent(PSSDate time, std::function<void(EventType)>& f, EventType e);
+	
 	static std::string GetWorldTimeStr();
+	static PSSDate GetWorldTime() { return tmgr.GetWorldTime(); }
 
 private:
 	static std::vector<sptr<Player>> allPlayers;
 	static std::vector<sptr<Team>> allTeams;
 
 	static TimeManager tmgr;
+
+	/// Other game objects will add functions and the eventtype to return to the eventmaster,
+	/// indexed by the time (tm) they need it called at.
+	static std::multimap<PSSDate, std::pair<std::function<void(EventType)>&, EventType>> eventMaster;
 };
 

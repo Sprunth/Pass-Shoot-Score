@@ -7,6 +7,6 @@
 class Player : public Person
 {
 public:
-	Player(int age);
+	Player(PSSDate birthday);
 	~Player();
 };

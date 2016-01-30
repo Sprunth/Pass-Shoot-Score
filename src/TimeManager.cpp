@@ -1,9 +1,9 @@
 #include "TimeManager.h"
 
-
 TimeManager::TimeManager()
 {
-	WorldTime = { 0, 0, 0, 1, 0, 116, 0, 0, 0 };
+	std::string start_date = "2016-08-01 00:00:00";
+	WorldTime = PSSDate(boost::posix_time::time_from_string(start_date));
 }
 
 
@@ -13,14 +13,12 @@ TimeManager::~TimeManager()
 
 void TimeManager::IncrementHour()
 {
-	WorldTime.tm_hour += 1;
-	mktime(&WorldTime);
+	auto hrs = boost::posix_time::hours(1);
+	WorldTime += hrs;
 }
 
-std::string TimeManager::GetWorldTimeStr(std::string format) const
+std::string TimeManager::GetWorldTimeStr() const
 {
-	std::stringstream ss;
-	ss << std::put_time(&WorldTime, format.c_str());
-	return ss.str();
+	return to_simple_string(WorldTime);
 }
 

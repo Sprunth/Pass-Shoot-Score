@@ -35,6 +35,7 @@ list (APPEND CLASSES_TO_INCLUDE
 set (INC_FILES ${INC_FILES}
 	${INC_DIR}/GUI.h
 	${INC_DIR}/Globals.h
+	${INC_DIR}/TimeHeader.h
 	)
 
 set (SRC_FILES ${SRC_FILES}
@@ -60,11 +61,12 @@ set (Boost_USE_STATIC_LIBS ON)
 set (Boost_USE_STATIC_RUNTIME OFF)
 set (BOOST_ALL_DYN_LINK OFF)
 
-find_package (Boost 1.58.0 REQUIRED)
+find_package (Boost 1.58.0 REQUIRED COMPONENTS date_time)
 if (Boost_FOUND)
 	include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 endif()
 set (EXTRA_LIBS ${EXTRA_LIBS} ${Boost_LIBRARIES})
+message('Boost_LIBRARIES=${Boost_LIBRARIES}')
 # BOOST END
 
 # OpenGL, GLFW, GL3W
@@ -118,7 +120,7 @@ set (SRC_DIR ${SRC_DIR} ${PROJECT_SOURCE_DIR}/src/imgui)
 
 
 # DEFINES/FLAGS
-add_definitions(-D_SCL_SECURE_NO_WARNINGS)
+add_definitions(-D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS)
 # END DEFINES/FLAGS
 
 # BUILD SETUP

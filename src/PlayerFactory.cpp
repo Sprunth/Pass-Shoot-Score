@@ -18,7 +18,12 @@ sptr<Player> PlayerFactory::CreatePlayer()
 	/// Todo: Allow generating different types of players
 	/// Different positions, different ages
 
-	auto player = std::make_shared<Player>(static_cast<int>(15 + rand() % 15));
+	/// generate a random birthday for this new player
+	auto birthday = WorldDB::GetWorldTime();
+	birthday -= boost::gregorian::years(15 + rand() % 4);
+	birthday -= boost::gregorian::days(rand() % 365);
+
+	auto player = std::make_shared<Player>(birthday);
 
 	std::stringstream ss;
 	ss << player->GetID();

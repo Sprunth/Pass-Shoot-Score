@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "GUI.h"
+#include "TimeHeader.h"
 #include <iomanip>
 
 class TimeManager
@@ -12,9 +13,11 @@ public:
 
 	void IncrementHour();
 
-	std::string GetWorldTimeStr(std::string format = "%b %d, %Y  %H-%M") const;
+	std::string GetWorldTimeStr() const;
+
+	PSSDate GetWorldTime() const { return WorldTime; }
 
 private:
-	tm WorldTime;
+	PSSDate WorldTime;
 };
 
