@@ -20,7 +20,8 @@ sptr<Player> PlayerFactory::CreatePlayer()
 
 	/// generate a random birthday for this new player
 	auto birthday = WorldDB::GetWorldTime();
-	birthday += std::chrono::hours(-24 * 365 * (rand() % 10 + 15));
+	birthday -= boost::gregorian::years(15 + rand() % 4);
+	birthday -= boost::gregorian::days(rand() % 365);
 
 	auto player = std::make_shared<Player>(birthday);
 

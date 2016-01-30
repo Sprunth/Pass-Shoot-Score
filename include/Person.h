@@ -3,26 +3,44 @@
 #include "Globals.h"
 #include "WorldDB.h"
 #include "WorldObject.h"
+#include "TimeHeader.h"
 
 class Person :
 	public WorldObject
 {
 public:
-	Person(TimePoint birthday);
+	Person(PSSDate birthday);
 	virtual ~Person();
 
 	int GetAge() const { return age; }
 
 private:
 	int age;
-	TimePoint birthday;
+	PSSDate birthday;
 
 	void OnBirthday(EventType);
 
 	static int CalculateAge(const Person& p)
 	{
 		// todo
-		return 0;
+
+		auto birthday = p.birthday;
+
+		auto worldDate = WorldDB::GetWorldTime().date();
+		auto bDate = birthday.date();
+
+		auto yrs = worldDate.year() - birthday.date().year();
+
+		if	( ((worldDate.month() == bDate.month()) &&
+			  (worldDate.day() < bDate.day())) ||
+			  (worldDate.month() < bDate.month())
+			)
+		{
+			yrs -= 1;
+		}
+
+		return yrs;
+		
 	}
 };
 

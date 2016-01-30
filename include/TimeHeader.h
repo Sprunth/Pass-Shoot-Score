@@ -1,6 +1,17 @@
 #pragma once
 
-#include <chrono>
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/date_time/gregorian/gregorian.hpp>
 
-using Clock = std::chrono::system_clock;
-using TimePoint = std::chrono::time_point<Clock>;
+using PSSDate = boost::posix_time::ptime;
+
+class TimeHeader
+{
+public:
+	
+	static std::string FormatPosixTime(const PSSDate d)
+	{
+		return boost::posix_time::to_simple_string(d);
+	};
+
+};

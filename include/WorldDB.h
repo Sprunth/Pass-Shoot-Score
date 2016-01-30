@@ -35,10 +35,10 @@ public:
 	static std::vector<sptr<Team>>* DEBUG_GetVectorOfTeams(){ return &allTeams; }
 #endif
 
-	static void RegisterEvent(TimePoint time, std::function<void(EventType)>& f, EventType e);
+	static void RegisterEvent(PSSDate time, std::function<void(EventType)>& f, EventType e);
 	
 	static std::string GetWorldTimeStr();
-	static TimePoint GetWorldTime() { return tmgr.GetWorldTime(); }
+	static PSSDate GetWorldTime() { return tmgr.GetWorldTime(); }
 
 private:
 	static std::vector<sptr<Player>> allPlayers;
@@ -48,6 +48,6 @@ private:
 
 	/// Other game objects will add functions and the eventtype to return to the eventmaster,
 	/// indexed by the time (tm) they need it called at.
-	static std::multimap<TimePoint, std::pair<std::function<void(EventType)>&, EventType>> eventMaster;
+	static std::multimap<PSSDate, std::pair<std::function<void(EventType)>&, EventType>> eventMaster;
 };
 

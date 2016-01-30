@@ -4,7 +4,7 @@ std::vector<sptr<Player>> WorldDB::allPlayers;
 std::vector<sptr<Team>> WorldDB::allTeams;
 
 TimeManager WorldDB::tmgr;
-std::multimap<TimePoint, std::pair<std::function<void(EventType)>&, EventType>> WorldDB::eventMaster;
+std::multimap<PSSDate, std::pair<std::function<void(EventType)>&, EventType>> WorldDB::eventMaster;
 
 void WorldDB::NewWorld()
 {
@@ -25,6 +25,8 @@ void WorldDB::LoadWorld()
 void WorldDB::Simulate(bool &stop)
 {	
 	tmgr.IncrementHour();
+
+	std::cout << "Start simulating World with time " << tmgr.GetWorldTimeStr() << std::endl;
 
 	/// Get all the events have registered to happen this hour
 	auto erange = eventMaster.equal_range(tmgr.GetWorldTime());
@@ -51,7 +53,7 @@ void WorldDB::Simulate(bool &stop)
 		ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
 	ImGui::Text("Simulating");
 	ImGui::Separator();
-	ImGui::Text(tmgr.GetWorldTimeStr("%b %d, %Y").c_str());
+	ImGui::Text(tmgr.GetWorldTimeStr().c_str());
 	ImGui::SameLine(160);
 	if (ImGui::Button("Stop"))
 	{
@@ -80,9 +82,9 @@ void WorldDB::RegisterTeam(std::shared_ptr<Team> t)
 	}
 }
 
-void WorldDB::RegisterEvent(TimePoint time, std::function<void(EventType)>& f, EventType e)
+void WorldDB::RegisterEvent(PSSDate time, std::function<void(EventType)>& f, EventType e)
 {
-	eventMaster.insert(std::pair<TimePoint, std::pair<std::function<void(EventType)>&, EventType>>
+	eventMaster.insert(std::pair<PSSDate, std::pair<std::function<void(EventType)>&, EventType>>
 		(time, std::pair<std::function<void(EventType)>&, EventType>(f, e)));
 }
 

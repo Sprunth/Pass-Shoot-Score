@@ -7,6 +7,6 @@
 class Player : public Person
 {
 public:
-	Player(TimePoint birthday);
+	Player(PSSDate birthday);
 	~Player();
 };

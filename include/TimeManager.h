@@ -13,11 +13,11 @@ public:
 
 	void IncrementHour();
 
-	std::string GetWorldTimeStr(std::string format = "%b %d, %Y  %H-%M") const;
+	std::string GetWorldTimeStr() const;
 
-	TimePoint GetWorldTime() const { return WorldTime; }
+	PSSDate GetWorldTime() const { return WorldTime; }
 
 private:
-	TimePoint WorldTime;
+	PSSDate WorldTime;
 };
 
