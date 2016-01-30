@@ -19,7 +19,7 @@ void Person::OnBirthday(EventType)
 	age = CalculateAge(*this);
 
 	auto oneYr = boost::gregorian::years(1);
-	auto nextBirthday = WorldDB::GetWorldTime() + oneYr;
+	auto nextBirthday = PSSDate(boost::gregorian::date(WorldDB::GetWorldTime().date().year(), birthday.date().month(), birthday.date().day()));
 	std::cout << "Current birthday: " << TimeHeader::FormatPosixTime(birthday) << std::endl;
 	std::cout << "Next birthday: " << TimeHeader::FormatPosixTime(nextBirthday) << std::endl;
 	std::cout << "Age: " << age << std::endl;
