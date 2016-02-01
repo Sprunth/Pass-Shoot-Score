@@ -9,4 +9,6 @@ class Player : public Person
 public:
 	Player(PSSDate birthday);
 	~Player();
+
+	void InitSkills() override;
 };

@@ -14,16 +14,24 @@ public:
 
 	int GetAge() const { return age; }
 
+protected:
+	void virtual InitSkills() = 0;
+	void AddSkill(std::string s, float initVal = 0);
+	void AddSkill(std::vector<std::string> s);
+	float GetSkill(std::string s);
+	void ChangeSkillValue(std::string s, float change);
+
 private:
 	int age;
 	PSSDate birthday;
+	
+	std::map<std::string, float> skills;
 
+	// birthday callback
 	void OnBirthday(EventType);
 
 	static int CalculateAge(const Person& p)
 	{
-		// todo
-
 		auto birthday = p.birthday;
 
 		auto worldDate = WorldDB::GetWorldTime().date();
